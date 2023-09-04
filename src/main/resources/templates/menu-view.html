@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kafe Application</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+  <h1 class="display-6">Menu Detail</h1>
+
+
+  <form action="#" th:object="${menu}">
+    <div class="mb-3">
+      <label for="inputName">Name</label>
+      <input disabled th:value="${menu.name}"
+             name="name" id="inputName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="inputPrice">Price</label>
+      <input disabled th:value="${#numbers.formatDecimal(menu.price, 1, 'COMMA', 2, 'POINT')}"
+             name="price" id="inputPrice" type="text" class="form-control">
+    </div>
+  </form>
+  <br>
+
+
+  <form action="#" th:action="@{/orders/{menuId}(menuId=${menu.id})}" method="POST">
+    <div class="mb-3">
+      <label for="inputQuantity">Quantity</label>
+      <input id="inputQuantity" type="input" class="form-control"
+             name="quantity">
+    </div>
+    <button id="submit-button" type="submit" class="btn btn-primary">Add to Cart</button>
+  </form>
+</div>
+
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kafe Application</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+  <h1 class="display-6">Menu Detail</h1>
+
+
+  <form action="#" th:object="${menu}">
+    <div class="mb-3">
+      <label for="inputName">Name</label>
+      <input disabled th:value="${menu.name}"
+             name="name" id="inputName" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="inputPrice">Price</label>
+      <input disabled th:value="${#numbers.formatDecimal(menu.price, 1, 'COMMA', 2, 'POINT')}"
+             name="price" id="inputPrice" type="text" class="form-control">
+    </div>
+  </form>
+  <br>
+
+
+  <form action="#" th:action="@{/orders/{menuId}(menuId=${menu.id})}" method="POST">
+    <div class="mb-3">
+      <label for="inputQuantity">Quantity</label>
+      <input id="inputQuantity" type="input" class="form-control"
+             name="quantity">
+    </div>
+    <button id="submit-button" type="submit" class="btn btn-primary">Add to Cart</button>
+  </form>
+</div>
+
+</body>
+</html>

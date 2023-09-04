@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kafe Application</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+  <h1 class="display-5">Add Menu</h1>
+  <form action="#" th:action="@{/menus/add}" method="POST">
+    <div class="mb-3">
+      <label for="inputName">Name</label>
+      <input id="inputName" type="input" class="form-control"
+             name="name">
+    </div>
+    <div class="mb-3">
+      <label for="inputName">Category</label>
+      <select class="form-control" id="inputCategory" name="categoryId">
+        <option th:each="category : ${categories}"
+                th:value="${category.id}" th:text="${category.name}">
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="inputPrice">Price</label>
+      <input id="inputPrice" type="input" class="form-control"
+             name="price">
+    </div>
+    <button id="submit-button" type="submit" class="btn btn-primary">Add Menu</button>
+  </form>
+</div>
+
+
+</body>
+</html>

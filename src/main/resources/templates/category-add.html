@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Kafe Application</title>
+  <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container w-50 p-3">
+  <h1 class="display-5">Add Category</h1>
+
+  <form action="#" th:action="@{/categories/add}" method="POST">
+    <div class="mb-3">
+      <label for="inputName">Category Name</label>
+      <input id="inputName" type="input" class="form-control"
+             name="name">
+    </div>
+    <button id="submit-button" type="submit" class="btn btn-primary">Add Category</button>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kafe Application</title>
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+
+<div class="container w-50 p-3">
+    <h1 class="display-6">Order</h1>
+
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+        <tr style="text-align: center; vertical-align: top; " class="table-secondary">
+            <th>Drink</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${order ne null}" th:each="item : ${order.items}" >
+            <td th:text="${item.menu.name}"></td>
+            <td style="text-align: right" th:text="${#numbers.formatDecimal(item.menu.price, 1, 'COMMA', 2, 'POINT')}"></td>
+            <td style="text-align: right" th:text="${item.quantity}"></td>
+            <td style="text-align: right" th:text="${#numbers.formatDecimal(item.getSubtotal(), 1, 'COMMA', 2, 'POINT')}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <p th:if="${order ne null}" style="text-align: right">Total: <span th:text="${#numbers.formatDecimal(order.getTotal(), 1, 'COMMA', 2, 'POINT')}"></span> Bahts</p>
+
+
+    <form action="#"
+          th:action="@{/admin/orders/{orderId}/finish(orderId=${order.id})}"
+          method="POST">
+        <button id="submit-button" type="submit"
+                class="btn btn-primary">Finish Order</button>
+    </form>
+</div>
+</body>
+</html>
