@@ -1,3 +1,4 @@
+// Jirapa Wongsuwon 6410450761
 package ku.cs.kafe.config;
 
 import ku.cs.kafe.service.UserDetailsServiceImp;
@@ -23,7 +24,13 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/css/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/js/**")).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/signup")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/signup")).permitAll()
+                        .requestMatchers(
+                                new AntPathRequestMatcher("/categories/add")).hasRole("ADMIN")
+                        .requestMatchers(
+                                new AntPathRequestMatcher("/menus/add")).hasRole("ADMIN")
+                        .requestMatchers(
+                                new AntPathRequestMatcher("/admin/**")).hasRole("ADMIN")
                         .anyRequest().authenticated()
         )
                 .formLogin((form) -> form

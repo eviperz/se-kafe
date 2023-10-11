@@ -1,5 +1,5 @@
+// Jirapa Wongsuwon 6410450761
 package ku.cs.kafe.entity;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
